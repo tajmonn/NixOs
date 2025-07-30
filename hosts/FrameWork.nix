@@ -1,6 +1,8 @@
 {config, pkgs, ...}:
 
 {
+  # System version
+  system.stateVersion = "25.05";
 
   # Set Hostname
   networking.hostName = "FrameWork";
@@ -38,7 +40,7 @@
   services.displayManager.sddm.enable = true;
 
   # Fonts 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
