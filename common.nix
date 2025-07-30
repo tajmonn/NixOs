@@ -1,0 +1,14 @@
+{ config, pkgs, ... }:
+
+{
+  # System-wide package manager settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Common utilities system-wide 
+  environment.systemPackages = with pkgs; [
+    wget curl git neofetch unzip htop pciutils usbutils neovim firefox
+  ];
+
+  # Enable flakes and nix-command globally 
+  programs.nix-ld.enable = true;
+}
