@@ -38,14 +38,14 @@
   services.displayManager.sddm.enable = true;
 
   # Fonts 
-  fonts.fonts = with pkgs; [
+  envirnoment.systemPackages.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    nerd-fonts.JetBrainsMono
-    nerd-fonts.FiraCode
-    nerd-fonts.Hack
-    nerd-fonts.Iosevka
+    nerd-fonts.jetbrainsmono
+    nerd-fonts.firacode
+    nerd-fonts.hack
+    nerd-fonts.iosevka
   ];
 
   # Enable Pipewire for audio 
