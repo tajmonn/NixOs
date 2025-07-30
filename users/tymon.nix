@@ -7,7 +7,6 @@
     ohMyZsh = {
       enable = true;
       theme = "agnoster";
-      plugins = [ "git" "z" "colored-man-pages" ];
     };
   };
   
