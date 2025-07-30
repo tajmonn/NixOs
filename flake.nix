@@ -3,12 +3,12 @@
 
     inputs = {
         # Latest nixpkgs (24.05 rolling) for tymon
-        nixpkgs-tymon.url = "github:NixOS/nixpkgs/nixos-24.11";
+        nixpkgs-tymon.url = "github:NixOS/nixpkgs/nixos-25.05";
 
         # Older, pinned nixpkgs for work
-        nixpkgs-work.url = "github:NixOS/nixpkgs/nixos-24.11"; # TODO change later for correct one!
+        nixpkgs-work.url = "github:NixOS/nixpkgs/nixos-25.05"; # TODO change later for correct one!
 
-        home-manager.url = "github:nix-community/home-manager/release-24.11";
+        home-manager.url = "github:nix-community/home-manager/release-25.05";
         home-manager.inputs.nixpkgs.follows = "nixpkgs-tymon";
     };
 
