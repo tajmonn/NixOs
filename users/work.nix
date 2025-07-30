@@ -22,11 +22,6 @@
     remmina
   ];
 
-  # Environment variables useful for work environment 
-  environment.variables = {
-    LANG = "en_US.UTF=8";
-    EDITOR = "neovim";
-  };
 
   # Enable some sytemd user services, e.g. for ssh-agent
   services = {
