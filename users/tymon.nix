@@ -4,10 +4,6 @@
   # Use zsh as default shell
   programs.zsh = {
     enable = true;
-    ohMyZsh = {
-      enable = true;
-      theme = "agnoster";
-    };
   };
   
   # Essential packages for tymon user
