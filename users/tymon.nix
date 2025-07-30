@@ -2,9 +2,7 @@
 
 {
   # Use zsh as default shell
-  programs.zsh = {
-    enable = true;
-  };
+  programs.zsh.enable = true;
   
   # Essential packages for tymon user
   home.stateVersion = "24.11";

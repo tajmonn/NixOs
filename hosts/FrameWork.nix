@@ -49,7 +49,6 @@
   ];
 
   # Enable Pipewire for audio 
-  sound.enable = true;
   services.pipewire.enable = true;
 
   # Firewall - basic
