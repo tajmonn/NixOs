@@ -6,7 +6,16 @@
 
   # Common utilities system-wide 
   environment.systemPackages = with pkgs; [
-    wget curl git neofetch unzip htop pciutils usbutils neovim firefox
+    wget 
+    curl 
+    git 
+    neofetch 
+    unzip 
+    htop 
+    pciutils 
+    usbutils 
+    neovim 
+    firefox
   ];
 
   # Enable flakes and nix-command globally 

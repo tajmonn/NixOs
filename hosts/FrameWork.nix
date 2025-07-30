@@ -37,11 +37,6 @@
   # Display manager (login screen)
   services.displayManager.sddm.enable = true;
 
-  # Clean shutdown/logging
-  services.logind.extraConfig = "
-    HandlePowerKey=poweroff
-  ";
-
   # Fonts 
   fonts.fonts = with pkgs; [
     noto-fonts
