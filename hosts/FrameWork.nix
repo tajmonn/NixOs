@@ -55,4 +55,29 @@
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [22 3389]; # SSH and RDP ports open
 
+  # Filesystems
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/5ed6ad0e-502f-45bb-9d6b-2bbd7f19ed02";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/335C-534F";
+    fsType = "vfat";
+  };
+
+  # Bootloader
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
+  # Swap
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/1c4d2c61-4abd-4253-a109-93a727a29366"; }
+  ];
+
+
+
+
 }
