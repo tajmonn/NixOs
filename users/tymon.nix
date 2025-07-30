@@ -15,10 +15,6 @@
     spicetify-cli
   ];
 
-  # Enable some basic systemd user services
-  services = {
-    dbus.enable = true;
-  };
 
   # # Environment variables, e.g. for gaming optimization
   # environment.variables = {
