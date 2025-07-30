@@ -15,7 +15,8 @@
     enable = true;
   };
 
-  # Essential packages for work user 
+  # Essential packages for work user
+  home.stateVersion = "24.05"; 
   home.packages = with pkgs; [
     openssh
     remmina

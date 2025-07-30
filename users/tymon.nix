@@ -12,6 +12,7 @@
   };
   
   # Essential packages for tymon user
+  home.stateVersion = "24.05";
   home.packages = with pkgs; [
     steam
     vesktop
