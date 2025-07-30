@@ -22,7 +22,4 @@
   #   WLR_NO_HARDWARE_CURSORS = "1"; # Sometime improves sursor on Wayland
   # };
 
-  # Enable XDG autostart for some programs if needed
-  xdg.autostart.enable = true;
-
 }
