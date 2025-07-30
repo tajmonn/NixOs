@@ -6,7 +6,7 @@
         nixpkgs-tymon.url = "github:NixOS/nixpkgs/nixos-24.05";
 
         # Older, pinned nixpkgs for work
-        nixpkgs-work.url = "github:NixOS/nixpkgs/07f8733b44177c3cbd64294bcd0f86dbb1ceaa9c"; # points to 22.11-ish
+        nixpkgs-work.url = "github:NixOS/nixpkgs/nixos-24.05"; # TODO change later for correct one!
 
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs-tymon";
