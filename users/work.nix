@@ -4,10 +4,6 @@
   # Use bash as default shell
   programs.bash = {
     enable = true;
-    interactiveShellInit = ''
-      # Custom bash promt for work
-      PS1='\{\e[32m\]\u@\h:w\$ \[\e[m\]'
-    '';
   };
 
   # Enable SSH client and config support 
