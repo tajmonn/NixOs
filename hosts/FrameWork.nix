@@ -12,14 +12,14 @@
   # Users and groups (basic, more user config done in home-manager)
   users.users.tymon = {
     isNormalUser = true;
-    extraGroups = ["wheel", "video", "networkmanager" ]; # wheel for sudo, video for graphics, networkmanager for networkmanager :)
+    extraGroups = ["wheel" "video" "networkmanager" ]; # wheel for sudo, video for graphics, networkmanager for networkmanager :)
     shell = pkgs.zsh;
     # home = "home/tymon"; # default so not needed
   };
 
   users.users.work = {
     isNormalUser = true;
-    extraGroups = ["wheel", "video", "networkmanager" ];
+    extraGroups = ["wheel" "video" "networkmanager" ];
     shell = pkgs.bash;
     # home = "home/work"; # deafult so not needed
   };
