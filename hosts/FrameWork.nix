@@ -55,7 +55,6 @@
 
   # Enable Pipewire for audio 
   sound.enable = true;
-  services.pulseaudio.enable = false;
   services.pipewire.enable = true;
 
   # Firewall - basic
