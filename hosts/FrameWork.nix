@@ -38,7 +38,7 @@
   services.displayManager.sddm.enable = true;
 
   # Fonts 
-  envirnoment.systemPackages.fonts = with pkgs; [
+  environment.systemPackages.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
