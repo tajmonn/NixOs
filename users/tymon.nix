@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{pkgs, ... }:
 
 {
   # Use zsh as default shell

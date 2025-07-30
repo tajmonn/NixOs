@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{pkgs, ... }:
 
 {
   # Use bash as default shell
