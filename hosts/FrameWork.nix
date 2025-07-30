@@ -42,10 +42,10 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    nerdfonts.FiraCode
-    nerdfonts.JetBrainsMono
-    nerdfonts.Hack
-    nerdfonts.Iosevka
+    nerd-fonts.JetBrainsMono
+    nerd-fonts.FiraCode
+    nerd-fonts.Hack
+    nerd-fonts.Iosevka
   ];
 
   # Enable Pipewire for audio 
