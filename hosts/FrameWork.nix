@@ -42,7 +42,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    nerd-fonts.jetbrainsmono
+    nerd-fonts.jetbrains-mono
     nerd-fonts.firacode
     nerd-fonts.hack
     nerd-fonts.iosevka
