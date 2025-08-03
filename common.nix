@@ -20,6 +20,11 @@
     usbutils 
     neovim 
     firefox
+    gh
+    rofi-wayland
+    vscode
+    kitty
+
   ];
 
   # Enable flakes and nix-command globally 
