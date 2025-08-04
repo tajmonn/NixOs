@@ -79,7 +79,8 @@
     { device = "/dev/disk/by-uuid/1c4d2c61-4abd-4253-a109-93a727a29366"; }
   ];
 
-
+  # Unfree packages
+  nixpkgs.config.allowUnfree = true;
 
 
 }
