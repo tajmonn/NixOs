@@ -13,6 +13,8 @@
     spicetify-cli
   ];
 
+  # Link Hyprland config from repo to ~/.config
+  home.file.".config/hypr/".source = ./tymon/;
 
   # # Environment variables, e.g. for gaming optimization
   # environment.variables = {
