@@ -13,8 +13,6 @@
     spicetify-cli
   ];
 
-  # Always back up conflicting files
-  backupFileExtension = "backup";
   # Link Hyprland config from repo to ~/.config
   home.file.".config/hypr".source = ./tymon;
 

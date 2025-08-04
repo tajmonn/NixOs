@@ -38,6 +38,8 @@
                     {
                         home-manager.useGlobalPkgs = false;
                         home-manager.useUserPackages = true;
+                        # Set backupFileExtension
+                        home-manager.backupFileExtension = "backup";
                         home-manager.users.tymon = import ./users/tymon.nix {
                             pkgs = pkgs-tymon;
                         };
