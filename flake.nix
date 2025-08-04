@@ -33,7 +33,8 @@
                     ./modules/hyprland.nix
                     ./modules/xfce.nix
                     ./common.nix
-
+                    
+                    home-manager.backupFileExtension = "backup";
                     home-manager.nixosModules.home-manager
                     {
                         home-manager.useGlobalPkgs = false;
