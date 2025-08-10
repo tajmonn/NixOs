@@ -24,9 +24,8 @@
     rofi-wayland
     vscode
     kitty
-    thunar
-    thunar-archive-plugin
-    file-roller
+    xfce.thunar-archive-plugin
+    xarchiver
 
   ];
 
