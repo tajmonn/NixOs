@@ -24,6 +24,9 @@
     rofi-wayland
     vscode
     kitty
+    thunar
+    thunar-archive-plugin
+    file-roller
 
   ];
 
