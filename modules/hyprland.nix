@@ -12,7 +12,7 @@
 
     # From wiki
     programs.hyprland.enable = true;
-    environment.systemPackages = with.pkgs [
+    environment.systemPackages = with pkgs; [
         quickshell 
     ];
 
