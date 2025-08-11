@@ -21,6 +21,7 @@
     nixosConfigurations.FrameWork = pkgs-stable.lib.nixosSystem {
       inherit system;
       modules = [
+        { config = { allowUnfree = true; }; }
         { pkgsUnstable = pkgs-unstable; }
         ./hosts/FrameWork.nix
         ./modules/hyprland.nix
@@ -34,5 +35,6 @@
         }
       ];
     };
+
   };
 }
