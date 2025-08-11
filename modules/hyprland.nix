@@ -12,9 +12,9 @@
 
     # From wiki
     programs.hyprland.enable = true;
-    # environment.systemPackages = [
-    #     pkgs.kitty # required for the default Hyprland config
-    # ];
+    environment.systemPackages = with.pkgs [
+        quickshell 
+    ];
 
     # Basic Hyprland config deployed system-wide
     environment.etc."hyprland.conf".text = ''
