@@ -1,24 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgsUnstable, ... }:
 
 {
-    # Enable hyrpland session for SDDM
+    # Enable Hyprland session for SDDM
     services.displayManager.sessionPackages = [ pkgs.hyprland ];
 
-    # Ensure SDDM is enabled (you can adjust or disable if you use another DM)
+    # Ensure SDDM is enabled
     services.displayManager.sddm.enable = true;
 
-    # Enable X11 server support (needed for Hyprland and fallback & XWayland)
+    # Enable X11 server support (needed for Hyprland + XWayland)
     services.xserver.enable = true;
 
-    # From wiki
+    # Enable Hyprland
     programs.hyprland.enable = true;
 
-    # Basic Hyprland config deployed system-wide
-    environment.etc."hyprland.conf".text = ''
-        monitor=eDP-1,2256x1506@60,0x0,1
-        # TODO add custom binds and settings
-    '';
-
+    # Install Quickshell from unstable
+    environment.systemPackages = [
+        (pkgsUnstable.quickshell)
+    ];
 
 
 }

@@ -27,31 +27,19 @@
             };
 
         in {
-            nixosConfigurations.FrameWork = nixpkgs-stable.lib.nixosSystem {
-                inherit system;
                 modules = [
+                    { pkgsUnstable = pkgs-unstable; }  # makes pkgsUnstable available to all system modules
                     ./hosts/FrameWork.nix
                     ./modules/hyprland.nix
-                    { pkgsUnstable = pkgs-unstable; } # makes pkgsUnstable visible to all modules
                     ./modules/xfce.nix
                     ./common.nix
+                    
 
                     home-manager.nixosModules.home-manager
                     {
                         home-manager.useGlobalPkgs = false;
                         home-manager.useUserPackages = true;
                         home-manager.backupFileExtension = "backup";
-
-                            # Pass both stable + unstable to users
-                        home-manager.users.tymon = import ./users/tymon.nix {
-                            pkgsStable = pkgs-stable;
-                            pkgsUnstable = pkgs-unstable;
-                        };
-
-                        home-manager.users.work = import ./users/work.nix {
-                        pkgsStable = pkgs-stable;
-                        pkgsUnstable = pkgs-unstable;
-                        };
                     }
                 ];
             };
