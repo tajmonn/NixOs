@@ -13,35 +13,26 @@
     };
 
     outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }@inputs:
-        let
-            system = "x86_64-linux";
-
-            pkgs-stable = import nixpkgs-stable {
-                inherit system;
-                config.allowUnfree = true;
-            };
-
-            pkgs-unstable = import nixpkgs-unstable {
-                inherit system;
-                config.allowUnfree = true;
-            };
-
-        in {
-                modules = [
-                    { pkgsUnstable = pkgs-unstable; }  # makes pkgsUnstable available to all system modules
-                    ./hosts/FrameWork.nix
-                    ./modules/hyprland.nix
-                    ./modules/xfce.nix
-                    ./common.nix
-                    
-
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager.useGlobalPkgs = false;
-                        home-manager.useUserPackages = true;
-                        home-manager.backupFileExtension = "backup";
-                    }
-                ];
-            };
-        
+  let
+    system = "x86_64-linux";
+    pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
+    pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+  in {
+    nixosConfigurations.FrameWork = pkgs-stable.lib.nixosSystem {
+      inherit system;
+      modules = [
+        { pkgsUnstable = pkgs-unstable; }
+        ./hosts/FrameWork.nix
+        ./modules/hyprland.nix
+        ./modules/xfce.nix
+        ./common.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = false;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+        }
+      ];
+    };
+  };
 }
