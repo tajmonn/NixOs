@@ -4,19 +4,17 @@
     # Enable Hyprland session for SDDM
     services.displayManager.sessionPackages = [ pkgs.hyprland ];
 
-    # Ensure SDDM is enabled
+    # Enable SDDM (login manager)
     services.displayManager.sddm.enable = true;
 
-    # Enable X11 server support (needed for Hyprland + XWayland)
+    # Enable X11 server (required for XWayland)
     services.xserver.enable = true;
 
-    # Enable Hyprland
+    # Enable Hyprland window manager
     programs.hyprland.enable = true;
 
-    # Install Quickshell from unstable
+    # Install Quickshell from unstable nixpkgs
     environment.systemPackages = [
-        (pkgsUnstable.quickshell)
+        pkgsUnstable.quickshell
     ];
-
-
 }

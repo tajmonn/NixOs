@@ -1,28 +1,30 @@
 {
-    description = "NixOS config with access to stable and unstable for both users";
+  description = "NixOS config with access to stable and unstable for both users";
 
-    inputs = {
-        # Stable nixpkgs
-        nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs = {
+    # Stable nixpkgs
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-        # Unstable nixpkgs
-        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Unstable nixpkgs
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-        home-manager.url = "github:nix-community/home-manager/release-25.05";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
+  };
 
-    outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
-    pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-  in {
-    nixosConfigurations.FrameWork = pkgs-stable.lib.nixosSystem {
+
+    pkgsStable = nixpkgs-stable.legacyPackages.${system};
+    pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
+  in
+  {
+    nixosConfigurations.FrameWork = nixpkgs-stable.lib.nixosSystem {
       inherit system;
+
       modules = [
-        { config = { allowUnfree = true; }; }
-        { pkgsUnstable = pkgs-unstable; }
+        { nixpkgs.config = { allowUnfree = true; }; }
         ./hosts/FrameWork.nix
         ./modules/hyprland.nix
         ./modules/xfce.nix
@@ -34,7 +36,11 @@
           home-manager.backupFileExtension = "backup";
         }
       ];
-    };
 
+      # Pass unstable packages to modules via specialArgs
+      specialArgs = {
+        pkgsUnstable = pkgsUnstable;
+      };
+    };
   };
 }
