@@ -1,50 +1,56 @@
 {
-    description = "NixOS config with different nixpkgs versions per user";
+    description = "NixOS config with access to stable and unstable for both users";
 
     inputs = {
-        # Latest nixpkgs (24.05 rolling) for tymon
-        nixpkgs-tymon.url = "github:NixOS/nixpkgs/nixos-25.05";
+        # Stable nixpkgs
+        nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-        # Older, pinned nixpkgs for work
-        nixpkgs-work.url = "github:NixOS/nixpkgs/nixos-25.05"; # TODO change later for correct one!
+        # Unstable nixpkgs
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
         home-manager.url = "github:nix-community/home-manager/release-25.05";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs-tymon";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    outputs = { self, nixpkgs-tymon, nixpkgs-work, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }@inputs:
         let
             system = "x86_64-linux";
 
-            pkgs-tymon = import nixpkgs-tymon {
+            pkgs-stable = import nixpkgs-stable {
                 inherit system;
                 config.allowUnfree = true;
             };
 
-            pkgs-work = import nixpkgs-work {
+            pkgs-unstable = import nixpkgs-unstable {
                 inherit system;
-            config.allowUnfree = true;
+                config.allowUnfree = true;
             };
+
         in {
-            nixosConfigurations.FrameWork = nixpkgs-tymon.lib.nixosSystem {
+            nixosConfigurations.FrameWork = nixpkgs-stable.lib.nixosSystem {
                 inherit system;
                 modules = [
                     ./hosts/FrameWork.nix
                     ./modules/hyprland.nix
+                    { pkgsUnstable = pkgs-unstable; } # makes pkgsUnstable visible to all modules
                     ./modules/xfce.nix
                     ./common.nix
-                    
+
                     home-manager.nixosModules.home-manager
                     {
                         home-manager.useGlobalPkgs = false;
                         home-manager.useUserPackages = true;
-                        # Set backupFileExtension
                         home-manager.backupFileExtension = "backup";
+
+                            # Pass both stable + unstable to users
                         home-manager.users.tymon = import ./users/tymon.nix {
-                            pkgs = pkgs-tymon;
+                            pkgsStable = pkgs-stable;
+                            pkgsUnstable = pkgs-unstable;
                         };
+
                         home-manager.users.work = import ./users/work.nix {
-                            pkgs = pkgs-work;
+                        pkgsStable = pkgs-stable;
+                        pkgsUnstable = pkgs-unstable;
                         };
                     }
                 ];

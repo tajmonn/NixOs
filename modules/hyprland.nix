@@ -12,9 +12,6 @@
 
     # From wiki
     programs.hyprland.enable = true;
-    environment.systemPackages = with pkgs; [
-        quickshell 
-    ];
 
     # Basic Hyprland config deployed system-wide
     environment.etc."hyprland.conf".text = ''
