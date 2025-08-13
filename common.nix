@@ -26,7 +26,9 @@
     kitty
     xfce.thunar-archive-plugin
     xarchiver
-
+    ruby
+    bundler
+    
   ];
 
   # Enable flakes and nix-command globally 
