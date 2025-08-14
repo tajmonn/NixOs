@@ -16,5 +16,7 @@
     # Install Quickshell from unstable nixpkgs
     environment.systemPackages = [
         pkgsUnstable.quickshell
+        pkgs.playerctl
+        pkgs.jq
     ];
 }
