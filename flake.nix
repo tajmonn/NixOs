@@ -48,6 +48,7 @@
       # Pass unstable packages to modules via specialArgs
       specialArgs = {
         pkgsUnstable = pkgsUnstable;
+        silentSDDM = silentSDDM;
       };
     };
   };
