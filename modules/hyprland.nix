@@ -5,7 +5,7 @@
     services.displayManager.sessionPackages = [ pkgs.hyprland ];
 
     # Enable SDDM (login manager)
-    services.displayManager.sddm.enable = true;
+    # services.displayManager.sddm.enable = true;
 
     # Enable X11 server (required for XWayland)
     services.xserver.enable = true;

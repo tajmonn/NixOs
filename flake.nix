@@ -10,6 +10,13 @@
 
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
+
+    # silentSDDM login manager by uiriansan
+    silentSDDM = {
+      url = "github:uiriansan/silentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
   };
 
   outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
@@ -28,6 +35,7 @@
         ./hosts/FrameWork.nix
         ./modules/hyprland.nix
         ./modules/xfce.nix
+        ./modules/sddm-theme.nix
         ./common.nix
         home-manager.nixosModules.home-manager
         {
