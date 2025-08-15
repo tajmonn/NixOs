@@ -57,7 +57,28 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "silentSDDM": "silentSDDM"
+      }
+    },
+    "silentSDDM": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755106409,
+        "narHash": "sha256-3UWu7uMezJwyFGxfjYdy6I8e0OXg/BW3Oc6NBSUg2NY=",
+        "owner": "uiriansan",
+        "repo": "silentSDDM",
+        "rev": "8ea5b24b4633383cd51ed42ec0a4d970f6be5baa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "uiriansan",
+        "repo": "silentSDDM",
+        "type": "github"
       }
     }
   },

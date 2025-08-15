@@ -8,7 +8,7 @@ in {
   environment.systemPackages = [ sddm-theme sddm-theme.test ];
   qt.enable = true;
 
-  services.displayManager.sdd = {
+  services.displayManager.sddm = {
     packages = pkgs.kdePackages.sddm; # qt6 version of sddm
     enable = true;
     theme = sddm-theme.pname;
