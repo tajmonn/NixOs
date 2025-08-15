@@ -28,6 +28,7 @@
     xarchiver
     ruby
     bundler
+    remmina
     
   ];
 
