@@ -9,7 +9,7 @@ in {
   qt.enable = true;
 
   services.displayManager.sddm = {
-    packages = pkgs.kdePackages.sddm; # qt6 version of sddm
+    package = pkgs.kdePackages.sddm; # qt6 version of sddm
     enable = true;
     theme = sddm-theme.pname;
     extraPackages = sddm-theme.propagatedBuildInputs;
