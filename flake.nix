@@ -1,54 +1,86 @@
 {
-  description = "NixOS config with access to stable and unstable for both users";
+  #
+
+  description = ''
+    Personal dotfiles for using Hyprland with QuickShell on NixOS.
+    Intended to be modular for easy customizability.
+  '';
 
   inputs = {
-    # Stable nixpkgs
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Unstable nixpkgs
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # silentSDDM login manager by uiriansan
     silentSDDM = {
       url = "github:uiriansan/silentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    nixcord.url = "github:kaylorben/nixcord";
   };
 
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-
-    pkgsStable = nixpkgs-stable.legacyPackages.${system};
-    pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
-  in
+  outputs = inputs@{ nixpkgs, quickshell, spicetify-nix, silentSDDM, ... }:
   {
-    nixosConfigurations.FrameWork = nixpkgs-stable.lib.nixosSystem {
-      inherit system;
+    nixosConfigurations = {
+      Machina = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = [ ];
+            _module.args = { inherit inputs; };
+          }
 
-      modules = [
-        { nixpkgs.config = { allowUnfree = true; }; }
-        ./hosts/FrameWork.nix
-        ./modules/hyprland.nix
-        ./modules/xfce.nix
-        ./modules/sddm-theme.nix
-        ./common.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = false;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-        }
-      ];
+          {
+            environment.systemPackages = [
 
-      # Pass unstable packages to modules via specialArgs
-      specialArgs = {
-        pkgsUnstable = pkgsUnstable;
-        silentSDDM = silentSDDM;
+            ];
+          }
+
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/desktop/configuration.nix
+        ];
+      };
+
+      FrameWork = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = [ ];
+            _module.args = { inherit inputs; };
+          }
+
+          {
+            environment.systemPackages = [
+              quickshell.packages.x86_64-linux.default
+            ];
+          }
+
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/laptop/configuration.nix
+        ];
       };
     };
   };
