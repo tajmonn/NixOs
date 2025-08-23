@@ -48,6 +48,7 @@
             fish
             neofetch
             gtk3
+            thunar
 
             # Misc
             cava

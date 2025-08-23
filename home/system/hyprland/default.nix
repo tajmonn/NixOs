@@ -61,6 +61,7 @@ in
         "systemctl --user enable --now hypridle.service &"
 	      "hyprctl setcursor phinger-cursors-light 14"
         # "qs -c caelestia &"
+        "firefox &" # todo delete when you fix launcher!
       ];
 
       monitor = [
