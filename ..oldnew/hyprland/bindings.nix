@@ -8,19 +8,19 @@ in
       # Kill active window
       "$mod, Q, killactive"
 
-      "$mod, mouse:272, movewindow" # Move
-      "$mod, mouse:274, movewindows" # [hidden]
-      "$mod, mouse:273, resizewindow" # Resize
+      "$mod, mouse:272, moveWindow" # Move
+      "$mod, mouse:274, moveWindow" # [hidden]
+      "$mod, mouse:273, resizeWindow" # Resize
 
-      "$mod, Left, movefocus, l"
-      "$mod, Right, movefocus, r"
-      "$mod, Up, movefocus, u"
-      "$mod, Down, movefocus, d"
+      "$mod, Left, moveFocus, l"
+      "$mod, Right, moveFocus, r"
+      "$mod, Up, moveFocus, u"
+      "$mod, Down, moveFocus, d"
 
-      "$mod+Shift, Left, movewindow, l"
-      "$mod+Shift, Right, movewindow, r"
-      "$mod+Shift, Up, movewindow, u"
-      "$mod+Shift, Down, movewindow, d"
+      "$mod+Shift, Left, moveWindow, l"
+      "$mod+Shift, Right, moveWindow, r"
+      "$mod+Shift, Up, moveWindow, u"
+      "$mod+Shift, Down, moveWindow, d"
 
       "$mod, Semicolont, splitratio, -0.1"
       "$mod, Apostophe, splitratio, +0.1"

@@ -4,13 +4,10 @@
         # User Specific Config
         ./variables.nix
 
-        # System
-        ../../home/system/hyprland
-        ../../home/system/hypridle
-        ../../home/system/hyprlock
-        ../../home/system/cursor
-        ../../home/system/fish-shell
-        ../../home/system/git
+        # some stuff
+        ../../nixos/home/cursor.nix
+        ../../nixos/home/fish-shell.nix
+        ../../nixos/home/git.nix
 
         # Programs
         ../../home/programs/discord
@@ -25,6 +22,11 @@
         # Set the home directory path for our user
         inherit (config.var) username;
         homeDirectory = "/home/" + config.var.username;
+
+        # Copy dotfiles
+        file.".config".source = ../../dotfiles/.config;
+        file.".config".recursive = true;
+        file.".face".source = ../../dotfiles/.face;
 
         # Packages
         packages = with pkgs; [
@@ -48,7 +50,7 @@
             fish
             neofetch
             gtk3
-            thunar
+            xfce.thunar
 
             # Misc
             cava
