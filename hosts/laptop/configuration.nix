@@ -21,6 +21,7 @@
     ./variables.nix
   ];
 
+
   nix.settings = {
     download-buffer-size = 134217728;
   };

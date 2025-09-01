@@ -6,7 +6,7 @@ let
   };
 in
 {
-  environment.systemPackages = [ sddm-theme sddm-theme.test ];
+  environment.systemPackages = [ sddm-theme sddm-theme.test];
 
   services.displayManager.sddm = {
     enable = true;

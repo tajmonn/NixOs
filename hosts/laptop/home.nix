@@ -51,6 +51,7 @@
             neofetch
             gtk3
             xfce.thunar
+            feh
 
             # Misc
             cava
