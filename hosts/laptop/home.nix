@@ -59,6 +59,7 @@
             ddcutil
             brightnessctl
             imagemagick
+            app2unit
         ];
 
         # State version
