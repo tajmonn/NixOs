@@ -5,6 +5,7 @@
     ../../nixos/boot-manager.nix
     ../../nixos/audio.nix
     ../../nixos/bluetooth.nix
+    ../../nixos/caelestia.nix
     ../../nixos/fonts.nix
     ../../nixos/home-manager.nix
     ../../nixos/nix.nix
