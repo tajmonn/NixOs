@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  # Cursor setup
   home.pointerCursor = {
     hyprcursor.enable = true;
     hyprcursor.size = 14;

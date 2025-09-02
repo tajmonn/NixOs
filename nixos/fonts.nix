@@ -14,7 +14,6 @@
       work-sans
       source-sans
  
-      papirus-icon-theme
       material-symbols
 
       noto-fonts

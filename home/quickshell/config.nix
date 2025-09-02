@@ -35,6 +35,8 @@
     C_STATE = "${config.xdg.stateHome}/caelestia";
     C_CACHE = "${config.xdg.cacheHome}/caelestia";
     C_CONFIG = "${config.xdg.configHome}/caelestia";
+    # Add QT platform theme
+    QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
   # Directory setup and permissions
